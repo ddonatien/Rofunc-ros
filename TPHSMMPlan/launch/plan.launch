@@ -1,0 +1,20 @@
+<launch>
+
+  <!-- Pass in mocap_config_file:=/path/to/config.yaml to change options. -->
+  <arg name="model_file"
+       default="$(find rofunc_ros)/OptiLocation/model/tphsmm.pkl" />
+  <arg name="ot_topic"
+       default="/ot/topic" />
+  <arg name="pose_topic"
+       default="/pose/topic" />
+
+  <node pkg="rofunc_ros"
+        type="planner.py"
+        name="tphsmm_planner"
+        output="screen"
+        respawn="false"
+        launch-prefix=""
+        required="true">
+        <param name="model_path" value="$(arg model_file)">
+  </node>
+</launch>
